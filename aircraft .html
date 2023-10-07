@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aircraft</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #sec1{
+            height: 100vh;
+            width: 100%;
+            background-image: url(./images/Flaris_AIRCRAFT3-min.jpg);
+            background-position: center;
+            background-size: cover;
+            padding: 1px;
+        }
+        #nav1{
+            height: 100px;
+            width: 100%;
+            background-color:  rgba(0, 0, 0, 0.788);
+            border: px solid white;
+            padding: 1px;
+            position: fixed;
+        }
+        #logo1{
+            height: 60px;
+            width: 200px;
+            border: px solid white;
+            margin-top: 30px;
+            margin-left: 50px;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+        }
+        #list1{
+            color: white;
+            list-style: none;
+            display: inline;
+            margin: 10px;
+        }
+        #nav{
+            height: 20px;
+            width: 825px;
+            border: px solid white ;
+            margin-top: -40px;
+            margin-left: 250px;
+        }
+        #slogo2{
+            height: 30px;
+            width: 110px;
+            border: px solid white;
+            margin-top: -60px;
+            margin-left: 1150px;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+        }
+        #pic1{
+            height: 30px;
+            width: 30px;
+            border-radius: 50px;
+            display: inline-block;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEUAAAD////8/PwEBATh4eE7OzsJCQmJiYnJycnPz8/a2tr5+fnGxsb19fXs7Oybm5tAQEB1dXXW1tZeXl5mZmaPj4+0tLR7e3vm5uZZWVkxMTGurq6CgoJwcHAZGRnS0tIgICAqKipKSkqfn58VFRVTU1NISEinp6eUlJQvLy+9vb0mJiYXFxdqamrWOoelAAAMnklEQVR4nO2diXrbqhKAAXmJrMXyvsmx0zTNdvv+r3cByalka5CAATs+mXO6fa2B38MyDAND6L0LuXYDnMsP4feXH8LvLz+E319+CL+/OCNkX78ypvpXir/EETeErPpLlCSjeDfOV/u/89lsM5vN/+5X+XgXj9IkavgUsrjSYaG4NFy+Tf48Ekgef03elmHqqA2FOOul6Wg36R8HXzBB+eP0x3+/Hxz7k13PGaYbwt7rJDtDqdBV//hFmk1e107agkb4NWekcQ53S7Uc8zj9Kg1rVGIRFk1iSbjP2kkUkk3ChKHOsZi9lIWLTyu8QHbe7SJEbBQWIZ/117v+V0OtKPnc09+tGY3aq+0iWDpcD99rjTSmK+V9iDXv2BGyYsCw8MUGDGB9OaCMRktCLpxvJtoUoBLK0mYhk7aDFacVoaw5lnzlLIFGWJY3j6mtNWc5DqPp/NQeTEBpCRQlzqfX1CFN8rI1LiW3M+iMCfnwiMYEd35pElH+M7MYjWaEkajxsHHPVzJuDnLKNhqSRoRiNU4WxWDxAChGwSIpvlYvhLK/xBnxo8GTZLFhTzUipHRcfrseEclYv6kmhPJ7HPXb2+NA+iMTNeoRcmM4YnRpuv+zk4A8LimLdKcbPUK5B5xcha9Ydlf6W0dtwt7mSoAF4qanO6Pq9tLR1u/0UgWUiNuRKx0yuY9Y+l0imjDJh0TsjKlBSOUi4dgI7UBInk/NwSXkPTTiZszguoDFxvEtElM6NiGfwlbeF/kmQjLgU6rGUNQg3BOCvw80geQ/Jg7GYTRDmWSkc7/D96Q06vnfzCLa0RvXhZAJQ4IDDsAq9QgLGTz92o93cTgdjaaHw0P8sVw+L/L97CV7Pz6enXJcFBKQuTCvuiiyGyGN9mhjUBayXS0PcPPS3quaUHbUjvZbRx1O5CyKQSgW7cJz31DR14HFoa2UQE43aIS02O3i6PC3PGNi/wpvkrBl4ZXfdrftVAthYcmMMciKBn++dmpW2Km8ZzmA7Ail5wDLVBM9q9dt8HQjHCxFYS2IrTqkdITk0A7I710HuO6EvE0j2vqNtRFS2tvizKIByfgAZBGWDomwbvq91qLaZxp56IKhwz+pGNZovbQYOhsbHRafxNjRB+IbmkUau/NOhFJWlbbqEsqP4cwyHHDLu2f3DUF3QrKktOgb2oRM7FBGvzEIeQmfvajjENQi5CU/tnjglL2UURy3IW+H9Oc60SHJ1M4pdS99w1kJA5JTvQCLzjoUzRsry1X1UhpjwAnpJ93Vp0VYyINqqlHpMLELjalI55XejDBLFEUpdMgWKHRciy+J7qmRHiFZGBHq1gLwCXvoQ9tRrVv3wYQwQnJucx3qu+J1CTew+d1IKNeXZzTf6LMWnBGhqAMYCc2E/P8Uzbt9nDon5C1NIYsX6qUsR/OMbgwObrUIpesuhyw3qJdOCZLrKTA6uzWY5aYAIkQ4RwOUu1SVNLWrzRN1UUlA/gIDERiHCNbMST5VXobie0+nYVyTh2cD32zcXEXzOGQbvPOJufK+BaPpeN5vPDbXbcFcYxxKZx4CnJQ35VKYDpGq4e1tDi1u7qUzxCOmpYKPrrNT8y4brN2EZiU2Eh4aKzUUYHhISTalVXFem340pzAPG223c0JpzrwgqvA3NJWK854c80AyIJum3f6lDhldF/8eR45A7KRoSoJUhxDZ3nWDAdygQzrE/GafwMVCONMRY/9ESYsGC/9Ch4ytnzDjEbaKqXSFeaIsQ1HW7YT8H6jP7nSlDxEylmCOdyIb3eBMaCDEDcvrA/rjFaVb1JqEZF10iLK1/ycQIZf1EbcqLoPLVf9yphnidh0FYQ89rCNo8NhczDTJE26lKkKM0Icz2V643S4IH5Aj18BxyFjvN2ZFpVx00wvCPXKNnnVI9m2EKZoXuBTfhNm5DXVOGGMHrnklFG0/t/TPCXPsSn3rkOQthOhB6p51GJBPFSGjPew6/euQnNmmVcLSJsUV/4Rntmm9l4ogWWTxT7hSEaKvFdcgPFsv6oT4w/AKhKQeRVQn3OFXdwXCunevPtM4uPBzBcL6QKwTOriTdgXCDCSk6RG/ujZCB6H/n2l1RawRhg6+1CcFIX5tUgY1z3CFUIbKWpT7+tAgMXidntEkbPoEl9CqIWdTTU2Hb1aEQDwE5GpTHdg82BHWzmRrM83EZlQ0OIEKPvh0DVKurfFYuzRUJUx+2RQrCaFLBhqErIins5FfVT97jdBq69TcS5miOwIqZMIZbiVHiDC1KhYah7rCGEtmdoSk6nCrEo5uglDE8lhtAIK6ZVoltAtPQCRc23oaHgBCO7sbrZfadiZSXxCrhGMrEwqR0DrWpbogVgnt/GxovVQGDdrJECC0m6PxxqG9S7O6f6oS2jn0EQltFwsyAQj/3gqhpbcoqB1eVAnnN0IYWR7wyUvCjYR2nQOPsPc/O0JCZgChXWA3HuGD9b7/1gkt97/fgND+aAEivJVxuLB2T0GENzKXMrt2qObS21gPWfTHmhBaD2/EpknsQzQgm+ZG7FI7V4MUyC69kb3F1N4PDu0tLPaH4ukf4PIP6ImCHFQIl6uh/aHFHl8Enk+GDZKPYRdjumj6xALh0VBoj2+xtYabtAXerWCqsAhbQshPY+EegWN9M9jxCxDaxg0rfG0Wkxh8ewA8XVPo0Do2GvKX2vm8AfF/QhqQYwScHya2xkSTXOEMGD63sDt7AuQahFWT5vz88D4Ix+Apt/3W81KuQQifAbs4x78C4SAEdXiNWAwHcgRjMe4nngY65b7/mKg7imuDxuH9xCaChPcfX2obBNEgV4kRhmYaeh9x3mdvT95prD44DilFeZ+tKt4Jj2e1NNyZwX3t2S9h0H5nJsZ+stu7DtvuPaXYhtvN3V27//uH3u6QOiFseuDkP3gPmGE9GFOKZx223+X2eR/fgQ7r23uA0NObCm4Is8tamt/FQHxyxCNh8S5G6/s0jOK+beKNULT4ad1OKB7pyTENN4+EARmyy2fpLnsp8htDvgjLN4a66ZBiZob1Nw4D8tJ04Nz41hfmguFNhwHwTiv0Xtv302E9TqiFENM49TgONd7cw3w30d841Ho3kX6g1euPMNZ4gxbx/VIvhLKlc633SxHfoPVAWLQTuqwKEDK0d4T99FLxjrCODoVgvQXthbB4C1rrlV3KsHId+uilZWIkrbmUS/SCUr2fXqr7JnshOLabH8Lmxb6NECGinHgiXFwzv4UPQtP8Fig5SrwQxqY5Sop78ZYTqltCqzwzApHZ+93c67BvmitIfmxqfTPAuQ5FvidVJinnObsc6zAocnYpKJQZrYTYBhG57qVFeJAiO4FyHErOIneecWOcERaB15vWDDYthNzWK7KpG3dVd4Sn/Id2hOLzU6v8h051KLKDtKWSatOh6OJLm2THLnXIZxll2rxOhNJNbvMgjruZRmSw6ZCQr7WXShma5GNwR1i+gqayt/UI+fc0MT5xc0HIWzIQaas7pVnqRBjJvNxmE6ojQpmXGy/zuOjrpjfKnIzDgbzMjJdbXU44kSGiGx2SWdS+TugQCkgZS6S/9veBhoi7a2aEogGT7rn4NAiLFPK6eoTyW/DBbUQoLBmyaks3bkIokpAPDfzgyLkRpIX8FmmkpdXQYbH06yqx3xtB8mGgQ1H7M201Ro0IpX2kvV3EvirGy/ugHZN7axJKiej0XTbawbuqXfBEspyRajNoTSimhw3BDiPWAdz0NDOa6hKK/8Su/xqEAnDSdRU0JpTmzdLFfeEu8rgUvchpLy1H+NTBHbcO0h/pzTFmhCUkUkryLvK1ApvkMzUjlJ01zojf0ZjFHfbzeIR8KCQLb1OqqGaRUJXbF5uQyq3ZAeGJjk6AfI04lCPQkw5Z+VM09sAn5JmVPdREiWY6PEmSl1+yI5El50COSC+ENJrOT03B5QyCcpTPwUfdfRDKmuM5MffEgYBlefOYmvVNJELpTqUsnBErt3gToSxtFjJquEZgEZZpp1mIGVVMyrJeDoZzCy7hSdbDdySwQrbDNVLLkAi5Mbze9a0zcpQT1qC/WzNNAxsULB3K7hQutmeqMFHhdhGeCsQQLMIibo4l4d4uCCebhAlryX6hJ2g6/PrS0zg/GuId8zg9K81eEAkrst6tOqrya43JVjusuaUubgi5pL3lKvsc1EFqA/T0h8ExWy17dqaZQtwQnq4fpYflePUCd9rjr8l4GabVj6CLI8Lq76Mo6YXL52E+2c9nQuZ/J/lwvHzoJUkEfQpPnPXSk0DBycVfMvN9X1dxTnh1+SH8/vJD+P3lh/D7yw/h95f7J/w/n9K0ZGhQIn8AAAAASUVORK5CYII=);
+            background-position: center;
+            background-size: contain;
+        }
+        #pic2{
+            height: 30px;
+            width: 30px;
+            border-radius: 50px;
+            display: inline-block;
+            background-image: url(data:image/png;base64,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);
+            background-position: center;
+            background-size: contain;
+        }
+        #pic3{
+            height: 30px;
+            width: 30px;
+            border-radius: 50px;
+            display: inline-block;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmowxpAAHE3lYPgjmwK5hmELU0HegADxyAeQ&usqp=CAU);
+            background-position: center;
+            background-size: cover;
+        }
+        #slogo3{
+            height: 30px;
+            width: 30px;
+            border-radius: 50px;
+            background-image: url(./images/iconPLflag-03.svg);
+            display: inline-block;
+            vertical-align: top;
+            margin-top: -60px;
+            margin-left: 30px;
+            cursor: pointer;
+        }
+        #witing1{
+            height: 180px;
+            width: 800px;
+            border: px solid white;
+            margin-top: 150px;
+            margin-left: 280px;
+        }
+        #w1{
+            color: rgb(0,170,215);
+            text-align: center;
+            margin-top: 0px;
+            font-weight: 100;
+        }
+        #w2{
+            color: white;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 100;
+        }
+        #sec2{
+            height: 100px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid;
+            padding: 1px;
+            /* position: fixed; */
+        }
+        .nav3{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .list2{
+            color: rgb(102,102,102);
+            list-style: none;
+            display: inline;
+            margin: 10px;
+        }
+        .sec3{
+            height: 100vh;
+            width: 100%;
+            background-image: url(./images/tlo_do_foty.png);
+            background-position: center;
+            background-size: 100% 100%;
+            padding: 1px;
+        }
+        .w3{
+            color: #000;
+            text-align: center;
+            margin-top: -300px;
+        }
+        .w4{
+            color: rgb(106,104,102);
+            text-align: center;
+            line-height: 25px;
+            margin-top: 30px;
+        }
+        .img1{
+            background-position: center;
+            background-size: cover;
+            margin-top: px;
+        }
+        .wb1{
+            height: 180px;
+            width: 100%;
+            border: px solid;
+            margin-top: 200px;
+            padding: 1px;
+        }
+        .w5{
+            color: #000;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .w6{
+            color: rgb(102,102,102);
+            text-align: center;
+            line-height: 30px;
+        }
+        .sec4{
+            height: 100vh;
+            width: 100%;
+            border: px solid;
+            padding: 1px;
+        }
+        .bbox1{
+            height: 80vh;
+            width: 500px;
+            border: 1px solid rgb(204,204,204);
+            margin-top: 60px;
+            text-align: center;
+            margin-left: 30px;
+            padding: 30px;
+        }
+        .w7{
+            color: black;
+            padding-top: 130px;
+        }
+        .w8{
+            color: rgb(81,82,84);
+            text-align: justify;
+            margin-left: 50px;
+            margin-top: 30px;
+            line-height: 25px;
+        }
+        .ibox2{
+            height: 80vh;
+            width: 750px;
+            background-image: url(./images/wlasciwosci_przelomowy.jpg);
+            background-position: center;
+            background-size: cover;
+            margin-top: -525px;
+            margin-left: 550px;
+        }
+        .sec5{
+            height: 90vh;
+            width: 100%;
+            border: px solid;
+            padding: 1px;
+        }
+        .ibox3{
+            height: 80vh;
+            width: 750px;
+            background-image: url(./images/wlasciwosci_przyjazny.jpg);
+            background-position: center;
+            background-size: cover;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+        .bbox4{
+            height: 80vh;
+            width: 500px;
+            border: 1px solid  rgb(204,204,204);
+            margin-top: -80vh;
+            margin-left: 800px;
+        }
+        .w9{
+            color: #000;
+            text-align: justify;
+            font-size: 15px;
+            margin-top: 100px;
+            margin-left: 80px;
+        }
+        .w10{
+            margin-left: 80px;
+            margin-top: 30px;
+            line-height: 20px;
+        }
+        .sec6{
+            height: 30vh;
+            width: 100%;
+            border: 1px solid;
+            background-image: url(./images/kabina_filtr.jpg);
+            background-position: center;
+            background-size: cover;
+            padding: 1px;
+        }
+        .wbox5{
+            height: 20vh;
+            width: 80%;
+            border: px solid white;
+            margin-left: 150px;
+            margin-top: 40px;
+        }
+        .w11{
+            color: white;
+            text-align: center;
+        }
+        .w12{
+            color: white;
+            text-align: justify;
+            margin-left: 80px;
+            margin-top: 30px;
+        }
+        .sec7{
+            height: 120vh;
+            width: 100%;
+            border: px solid;
+            padding: 1px;
+        }
+        .wbox6{
+            height: 200px;
+            width: 100%;
+            border: px solid;
+            margin-top: 25px;
+        }
+        .w13{
+            color: #000;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .w14{
+            color: rgb(107,102,102);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 20px;
+        }
+        .ibox7{
+            height: 80vh;
+            width: 750px;
+            background-image: url(./images/bezpieczenstwo_bierne_filtr.jpg);
+            background-position: center;
+            background-size: cover;
+            margin-top: -70px;
+            margin-left: 30px;
+        }
+        .ibox8{
+            height: 80vh;
+            width: 450px;
+            border: 1px solid rgb(204,204,204);
+            margin-top: -80vh;
+            margin-left: 830px;
+        }
+        .w15{
+            font-weight: 100;
+            margin-left: 50px;
+            margin-top: 100px;
+        }
+        .w16{
+            margin-left: 56px;
+            margin-top: 20px;
+        }
+        .w17{
+            margin-left: 50px;
+            font-weight: 100;
+            margin-top: 60px;
+        }
+        .w18{
+            margin-left: 56px;
+            margin-top: 20px;
+        }.sec8{
+            height: 90vh;
+            width: 100%;
+            border: px solid;
+            padding: 1px ;
+        }
+        .ibox9{
+            height: 80vh;
+            width: 450px;
+            border: 1px solid rgb(204,204,204);
+            margin-top: 10px;
+            margin-left: 30px;   
+        }
+        .w19{
+            font-weight: 300;
+            font-size: 20px;
+            margin-left: 50px;
+            margin-top: 150px;
+        }
+        .w20{
+            color: rgb(126,106,100);
+            text-align: justify;
+            line-height: 22px;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .ibox10{
+            height: 80vh;
+            width: 750px;
+            background-image: url(./images/Flaris_samolot_nawigacja_IMG_6507.jpg);
+            background-position: center;
+            background-size: cover;
+            margin-top: -380px;
+            margin-left: 500px;
+        }
+        .sec9{
+            height: 40vh;
+            width: 100%;
+            border: px solid;
+            background-image: url(./images/kadlub_filtr.jpg);
+            background-position: center;
+            background-size: cover;
+            padding: 1px;
+        }
+        .w21{
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .w22{
+            color: white;
+            text-align: justify;
+            line-height: 25px;
+            margin-left: 220px;
+            margin-top: 50px;
+        }
+        .sec10{
+            height: 40vh;
+            width: 100%;
+            border: px solid;
+            padding: 1px;
+        }
+        .w23{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .w24{
+            color: rgb(102,104,107);
+            text-align: center;
+            line-height: 24px;
+            margin-top: 30px;
+        }
+        .sec11{
+            height: 100vh;
+            width: 100%;
+            border: px solid;
+            padding: 1px;
+        }
+        .ibox11{
+            height: 90vh;
+            width: 450px;
+            border: 1px solid rgb(204,204,204);
+            margin-top: 40px;
+            margin-left: 30px;
+        }
+        .w25{
+            margin-top: 150px;
+            margin-left: 40px;
+        }
+        .w26{
+            color: rgb(81,82,84);
+            text-align: justify;
+            line-height: 25px;
+            margin-left: 45px;
+            margin-top: 30px;
+        }
+        .ibox12{
+            height: 90vh;
+            width: 800px;
+            border: px solid;
+            background-image: url(./images/naped_naped_filtr.jpg);
+            background-position: center;
+            background-size: cover;
+            margin-top: -90vh;
+            margin-left: 525px;
+        }
+        .sec12{
+            height: 35vh;
+            width: 100%;
+            border: 1px solid;
+            padding: 1px;
+            background-image: url(./images/design_filtr.jpg);
+            background-position: center;
+            background-position: center;
+        }
+        .w27{
+            color: white;
+            text-align: center;
+            margin-top: 35px;
+        }
+        .w28{
+            color: white;
+            text-align: justify;
+            line-height: 25px;
+            margin-left: 200px;
+            margin-top: 40px;
+        }
+        .sec13{
+            height: 100vh;
+            width: 100%;
+            border: 1px solid;
+            background-image: url(./images/specyfikacja\ \(1\).jpg);
+            background-position: center;
+            background-size: cover;
+            padding: 1px;
+        }
+        .w29{
+            text-align: center;
+        }
+        .ibox13{
+            height: 70vh;
+            width: 300px;
+            border: 1px solid rgb(204,204,204);
+            margin-top: 100px;
+            margin-left: 20px;
+            padding: 1px;
+        }
+        .w30{
+            color: rgb(81,82,89);
+            text-align: justify;
+            font-weight: 100;
+            margin-left: 25px;
+            margin-top: 30px;
+        }
+        .lbox14{
+            height: 1px;
+            width: 80px;
+            background-color: rgb(154,154,154);
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+        .w31{
+            color: rgb(81,82,89);
+            text-align: justify;
+            font-weight: 100;
+            margin-left: 25px;
+            margin-top: 30px;
+        }
+        .lbox15{
+            height: 1px;
+            width: 80px;
+            background-color: rgb(154,154,154);
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+        .w32{
+            color: rgb(81,82,89);
+            text-align: justify;
+            font-weight: 100;
+            margin-left: 25px;
+            margin-top: 30px;
+        }
+        .lbox16{
+            height: 1px;
+            width: 80px;
+            background-color: rgb(154,154,154);
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+        .w33{
+            color: rgb(81,82,89);
+            text-align: justify;
+            font-weight: 100;
+            margin-left: 25px;
+            margin-top: 30px;
+        }
+        .ibox17{
+            height: 70vh;
+            width: 300px;
+            border: px solid rgb(204,204,204);
+            background-image: url(./images/PREZENTACJA_ELEMENTS_rzuty_v2.png);
+            background-position: center;
+            background-size: cover;
+            margin-top: -470px;
+            margin-left: 400px;
+            padding: 1px;
+        }
+        .sec14{
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(30,30,30);
+            padding: 1px;
+        }
+        .wbox18{
+            height: 80vh;
+            width: 250px;
+            border: 1px solid rgb(81,82,84);
+            margin-left: 60px;
+            margin-top: 50px;
+        }
+        .wbox19{
+            height: 85vh;
+            width: 250px;
+            border: 1px solid rgb(81,82,84);
+            margin-left: 400px;
+            margin-top: -80vh;
+        }
+        .wbox20{
+            height: 80vh;
+            width: 550px;
+            border: 1px solid rgb(81,82,84);
+            margin-left: 740px;
+            margin-top: -85vh;
+        }
+        .w34{
+            color: white;
+            margin-left: 30px;
+            margin-top: 60px;
+        }
+        .w35{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .lbox21{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .w36{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .lbox22{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .w37{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .w38{
+            color: white;
+            margin-left: 30px;
+            margin-top: 60px;
+        }
+        .w39{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .lbox23{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .w40{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .lbox24{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .w41{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .w42{
+            color: white;
+            margin-left: 30px;
+            margin-top: 60px;
+        }
+        .w43{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .lbox25{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .w44{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .lbox26{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        .w45{
+            color: white;
+            text-align: justify;
+            margin-top: 40px;
+            margin-left: 32px;
+            line-height: 25px;
+        }
+        .w46{
+            color: white;
+            text-align: justify;
+            margin-top: -270px;
+            margin-left: 300px;
+            line-height: 25px;
+        }
+        .lbox27{
+            height: 2px;
+            width: 30px;
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 300px;
+        }
+        .w47{
+            color: white;
+            text-align: justify;
+            margin-top: 33px;
+            margin-left: 300px;
+            line-height: 25px;
+        }.sec15{
+            height: 40vh;
+            width: 100%;
+            background-color: rgb(30,30,30);
+            border: px solid;
+            padding: 1px;
+        }
+        .w48{
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .w49{
+            color: white;
+            text-align: center;
+            line-height: 22px;
+            margin-top: 40px;
+        }
+        .sec16{
+            height: 100vh;
+            width: 100%;
+            background-image: url(./images/flarislar01_filtr.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .bbox28{
+            height: 10vh;
+            width: 100%;
+            background-color:  rgb(30,30,30);
+            border: px solid white;
+            margin-top: -250px;
+        }
+        .sec17{
+            height: 40vh;
+            width: 100%;
+            background-color: rgb(30,30,30);
+            padding: 1px;
+        }
+        .bbox29{
+            height: 29vh;
+            width: 700px;
+            border: px solid white;
+            margin-left: 350px;
+            padding: 1px;
+        }
+        .w50{
+            color: white;
+            display: inline;
+            margin-left: 10px;
+        }
+        .w51{
+            color: white;
+            display: inline;
+            margin-left: 170px;
+        }
+        .bbox30{
+            height: 60px;
+            width: 250px;
+            border: 1px solid rgb(0,170,255);
+            margin-top: 90px;
+            padding: 1px;
+            cursor: pointer;
+        }
+        .bbox30:hover{
+            background-color: rgba(0, 170, 255, 0.336);
+        }
+        .bbox31{
+            height: 60px;
+            width: 250px;
+            border: 1px solid rgb(0,170,255);
+            margin-top: -60px;
+            margin-left: 445px;
+            padding: 1px;
+            cursor: pointer;
+        }
+        .bbox31:hover{
+            background-color: rgba(0, 170, 255, 0.336);
+        }
+        .w52{
+            text-align: center;
+            color: rgb(0,170,255);
+            font-weight: 100;
+            margin-top: 20px;
+        }
+        .w53{
+            text-align: center;
+            color: rgb(0,170,255);
+            font-weight: 100;
+            margin-top: 20px;
+        }
+        .sec18{
+            height: 80vh;
+            width: 100%;
+            border: 1px solid;
+            padding: px;
+        }
+        .bbox32{
+            height: 80vh;
+            width: 40%;
+            border: px solid red;
+            background-image: url(./images/masz_pytania_filtr\ \(1\).jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .bbox33{
+            height: 80vh;
+            width: 60%;
+            border: px solid red;
+            margin-top: -80vh;
+            margin-left: 40%;
+            padding: 1px;
+        }
+        .w54{
+            margin-top: 60px;
+            margin-left: 50px;
+        }
+        .input1{
+            height: 50px;
+            width: 250px;
+            border: 2px solid rgb(239,239,239);
+            margin-top: 60px;
+            margin-left: 50px;
+        }
+        .input2{
+            height: 50px;
+            width: 250px;
+            border: 2px solid rgb(239,239,239);
+            margin-top: 60px;
+            margin-left: 50px;
+        }
+        .input3{
+            height: 50px;
+            width: 250px;
+            border: 2px solid rgb(239,239,239);
+            margin-top: -200px;
+            margin-left: 400px;
+        }
+        .input4{
+            height: 50px;
+            width: 250px;
+            border: 2px solid rgb(239,239,239);
+            margin-top: -300px;
+            margin-left: 400px;
+        }
+        .input5{
+            height: 150px;
+            width: 550px;
+            border: 2px solid rgb(239,239,239);
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+        #sec6{
+            height: 80vh;
+            width: 100%;
+            background-color: rgb(0,21,44);
+            padding: 1px;
+        }
+        #nbox1{
+            height: 200px;
+            width: 600px;
+            border: px solid;
+            margin-top: 80px;
+            margin-left: 100px;
+        }
+        #witing24{
+            color: white;
+            margin-left: 50px;
+        }
+        #list2{
+            color: white;
+            list-style: none;
+            margin: 50px;
+        }
+        #witing26{
+            color: white;
+            margin-top: -273px;
+            margin-left: 300px;
+        }
+        #list3{
+            color: white;
+            list-style: none;
+            margin: 50px;
+            margin-left: 300px;
+        }
+        #witing28{
+            color: white;
+            margin-top: -203px;
+            margin-left: 500px;
+        }
+        #list4{
+            color: white;
+            list-style: none;
+            margin: 50px;
+            margin-left: 500px;
+        }
+        #nbox2{
+            height: 300px;
+            width: 500px;
+            border: px solid;
+            margin-top: -220px;
+            margin-left: 800px;
+        }
+        #witing30{
+            color: white;
+            font-weight: 100;
+            font-size: 25px;
+        }
+        #input1{
+            background-color: white;
+            height: 50px;
+            width: 400px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        #but1{
+            height: 50px;
+            width: 400px;
+            border: 2px solid white;
+            border-radius: 15px;
+            background-color: transparent;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        #but1:hover{
+            background-color: rgba(255, 255, 255, 0.473);
+        }
+        #witing31{
+            color: white;
+            text-align: center;
+            
+        }
+        #witing32{
+            color: white;
+            margin-top: 30px;
+        }
+        #img10{
+            background-position: center;
+            background-size: cover;
+            margin-top: 30px;
+            margin-left: 150px;
+        }
+        #nbox3{
+            height: 3px;
+            width: 1100px;
+            background-color: rgb(12,113,195);
+            margin-left: 150px;
+            margin-top: 20px;
+        }
+        #witing33{
+            color: white;
+            margin-top: 20px ;
+            margin-left: 150px;
+        }
+        #nbox4{
+            height: 50px;
+            width: 130px;
+            border: px solid;
+            margin-top: -25px;
+            margin-left: 1150px;
+        }
+        #fbox1{
+            height: 50px;
+            width: 40px;
+            border: px solid;
+            display: inline-block;
+            background-image: url(data:image/jpeg;base64,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);
+            background-position: center;
+            background-size: cover;
+        }
+        #ybox2{
+            height: 50px;
+            width: 40px;
+            border: px solid;
+            display: inline-block;
+            background-position: center;
+            background-size: cover;
+            background-image: url(data:image/png;base64,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);
+        }
+        #ibox3{
+            height: 50px;
+            width: 40px;
+            border: px solid;
+            display: inline-block;
+            background-position: center;
+            background-size: cover;
+            background-image: url(data:image/jpeg;base64,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);
+        }
+    </style>
+</head>
+<body>
+    <div id="sec1">
+        <nav id="nav1">
+            <div id="logo1">
+                <img src="./images/logoFlarisSVG.svg" alt="">
+                <ul id="nav">
+                    <li id="list1">AIRCRAFT</li>
+                    <li id="list1">PILOTING COURSES</li>
+                    <li id="list1">PURCHASE</li>
+                    <li id="list1">NEWS</li>
+                    <li id="list1">OUR STORY</li>
+                    <li id="list1">PRESS ROOM</li>
+                    <li id="list1">CONTACT</li>
+                </ul>
+            </div>
+            <div id="slogo2">
+                <div id="pic1"></div>
+                <div id="pic2"></div>
+                <div id="pic3"></div>
+            </div>
+            <div id="slogo3"></div>
+        </nav>
+        <div id="witing1">
+            <h1 id="w1">› THE FASTEST PERSONAL JET ‹</h1>
+            <h1 id="w2">SPEED – RANGE – FREEDOM – GRASS AIRSTRIPS TAKE-OFF</h1>
+        </div>
+    </div>
+    <div id="sec2">
+        <ul class="nav3">
+            <li class="list2">Features</li>
+            <li class="list2">Safety</li>
+            <li class="list2">Fuselage</li>
+            <li class="list2">Specification</li>
+            <li class="list2">Buy</li>
+        </ul>
+    </div>
+    <div class="sec3">
+        <img class="img1" src="./images/fota-copy1-1.png" alt="">
+        <h1 class="w3">› FLARIS LAR 01 ‹</h1>
+        <p class="w4">The first and only aircraft of its type in the world, FLARIS LAR 01 unites jet-tier performance with <br> levels of safety and economic accessibility previously reserved solely for small general aviation <br> units. The cutting-edge construction made overcoming many traditional limitations possible and <br> resulted in creation of an internationally exceptional aircraft!</p>
+        <div class="wb1">
+            <h1 class="w5">› FEATURES ‹</h1>
+            <p class="w6">FLARIS LAR 1 is a single-engine jet aircraft with lightweight, composite  <br> construction. It creates a new category of small, agile jets, ideal for quick movement <br> for any purpose.</p>
+        </div>
+    </div>
+    <div class="sec4">
+        <div class="bbox1">
+            <h4 class="w7">SOAR TO A HIGHER LEVEL OF COMFORT</h4>
+            <p class="w8">The intuition of piloting FLARIS LAR 1 is apparent in its minimal operations, secure stall,  and automatic spin recovery. The jet was  designed to be flown by a single pilot (with Garmin G600 Txi radio and navigation system and FFAS® interactive onboard computer  acting as a copilot). The only qualification required to fly FLARIS LAR 1 is a Private Pilot License (PPL).</p>
+        </div>
+        <div class="ibox2"></div>
+    </div>
+    <div class="sec5">
+        <div class="ibox3"></div>
+        <div class="bbox4">
+            <h2 class="w9">REVOLUTIONARY AND ENVIRONMENTALLY <br> FRIENDLY AVIATION</h2>
+            <p class="w10">FLARIS LAR 1 is one tonne lighter than VLJ <br> aircraft and initiates a brand new category of <br> High-Speed Personal Jet. Light construction, <br> extraordinary aerodynamics, and a cutting-edge <br> FJ33-5A engine operated with an ECU computer <br> allowed a significant reduction of fuel <br> consumption and exhaust gas emission. <br> Consequently, FLARIS LAR 1 is environmentally <br> friendly.</p>
+        </div>
+    </div>
+    <div class="sec6">
+        <div class="wbox5">
+            <h1 class="w11">› COCKPIT ‹</h1>
+            <p class="w12">FLARIS LAR 1 is equipped with a versatile Garmin G600 Txi radio and navigation system that acts as a copilot and <br> minimizes the number of equipment distracting the pilot.</p>
+        </div>
+    </div>
+    <div class="sec7">
+        <div class="wbox6">
+            <h1 class="w13">› SAFETY ‹</h1>
+            <p class="w14">It is a light jet aircraft of a completely new type, being approachable for amateurs and satisfying the expectations of <br> experienced pilots at the same time</p>
+        </div>
+        <div class="ibox7"></div>
+        <div class="ibox8">
+            <h3 class="w15">LIFT-TO-DRAG RATIO</h3>
+            <p class="w16">Thanks to its exceptional lift-to-drag ratio of 18 <br> which is comparable to that of a glider and a drop- <br> shaped semi-monocoque fuselage, FLARIS LAR 1 <br> is able to glide 18 kilometers for every kilometer of <br> altitude loss in a power-off setting. This gives the <br> pilot a lot of time to find a landing site in case of <br> emergency. Just a 250-meter-long grass airstrip <br> will enable you to perform a safe landing, thanks <br> to a solid landing gear.</p>
+            <h3 class="w17">SAFETY SYSTEM</h3>
+            <p class="w18">FLARIS LAR 1 is equipped with a modern <br> parachute rescue system for the whole aircraft.</p>
+        </div>
+    </div>
+    <div class="sec8">
+        <div class="ibox9">
+            <h1 class="w19">NAVIGATION SYSTEM</h1>
+            <p class="w20">The avionic system of Flaris LAR uses a popular <br> G600Txi system which provides maximal safety <br> and convenience for the user. The GTN-750 <br> navigation system (GPS) placed in the center of <br> the dashboard, combines navigating function with <br> operating additional devices, including a radio <br> station and a transponder. It is equipped with <br> a touch screen which helps to navigate a user- <br> friendly icon menu.</p>
+            <div class="ibox10"></div>
+        </div>
+    </div>
+    <div class="sec9">
+        <h1 class="w21">› FUSELAGE ‹</h1>
+        <p class="w22">FLARIS LAR 1 is ultra-light and durable thanks to its hybrid structure.  It is made mostly of pre-impregnated carbon fibers, found <br> in the most modern long-haul aircraft, like A350 or Dreamliner. To ensure highest durability and safety, the most vital large <br> elements of the construction (wing spars, landing-gear struts, supports of control surfaces, etc.) are milled from aluminum, using <br> numerical control technology.</p>
+    </div>
+    <div class="sec10">
+        <h1 class="w23">› PROPULSION ‹</h1>
+        <p class="w24">The solid and reliable FJ33-5 engine makes the Flaris jet safer than other light aircraft. Turbofan engines are much more reliable <br> than reciprocating engines, and the FJ33 turbofan employed on Flaris is especially reliable due to its mature and robust design. The <br> design of FJ33 is based directly on the larger FJ44 engine family which accumulated over 10,000,000 flight hours in total, so the <br> engine concept has proven itself to be trustworthy. The titanium fan was proven so tough that Williams International covers foreign <br> object damage (FOD) costs in its versatile and convenient engine maintenance program called TAP Blue. </p>
+    </div>
+    <div class="sec11">
+        <div class="ibox11">
+            <h3 class="w25">UNYIELDING QUALITY</h3>
+            <p class="w26">All parts and labor needed for the maintenance of <br> FJ33 engine are provided by authorized service <br> centers of Williams International. To enhance <br> safety, all of our engines have been included in the <br> Total Assurance Program (TAP Blue) by Williams <br> lnternational. TAP Blue provides complete <br> maintenance of the engine, and there are <br> no added costs for the customer beyond a small <br> fee per flight-hour, so the customers are keen <br> to act quickly in bringing any concerns to the <br> service center, and to keep all of their engine <br> inspections up to date.</p>
+        </div>
+        <div class="ibox12"></div>
+    </div>
+    <div class="sec12">
+        <h1 class="w27">› EXTERIOR DESIGN ‹</h1>
+        <p class="w28">Flaris LAR1 introduces new quality to private air transport. To complement the idea of creating means of private transportation, <br> we encourage the owners to have their jet painted according to their personal preference, so the liveries highlight the private <br> nature of the aircraft and manifest their personality.</p>
+    </div>
+    <div class="sec13">
+        <h1 class="w29">› SPECIFICATION ‹</h1>
+        <div class="ibox13">
+            <h2 class="w30">Metal <br> <b>Metal-Master</b></h2>
+            <div class="lbox14"></div>
+            <h2 class="w31">Length <br> <b>8,32 m / 27ft 4in</b></h2>
+            <div class="lbox15"></div>
+            <h2 class="w32">Height <br> <b>2,43 m / 7ft 12in</b></h2>
+            <div class="lbox16"></div>
+            <h2 class="w33">Span <br><b> 8,68 m / 28ft 6in</b></h2>
+        </div>
+        <div class="ibox17"></div>
+    </div>
+    <div class="sec14">
+        <div class="wbox18">
+            <h2 class="w34">Specification</h2>
+            <p class="w35">Number of seats <br> <b>5 (1 pilot + 4 passengers)</b></p>
+            <div class="lbox21"></div>
+            <p class="w36">Empty weight <br> <b>900 kg</b></p>
+            <div class="lbox22"></div>
+            <p class="w37">Takeoff mass <br> <b>1850 kg</b></p>
+        </div>
+        <div class="wbox19">
+            <h2 class="w38">Power</h2>
+            <p class="w39">Engine <br> <b>Williams FJ33-5A</b></p>
+            <div class="lbox23"></div>
+            <p class="w40">Static thrust <br> <b>8,2 kN</b></p>
+            <div class="lbox24"></div>
+            <p class="w41">Avionics <br> <b>G 600 Txi System and FFAS® interactive onboard computer</b></p>
+        </div>
+        <div class="wbox20">
+            <h2 class="w42">Performance</h2>
+            <p class="w43">Cruise speed <br> <b>769 km/h</b></p>
+            <div class="lbox25"></div>
+            <p class="w44">Stall speed <br> <b>115 km/h</b></p>
+            <div class="lbox26"></div>
+            <p class="w45">Service ceiling <br> <b>7620 m</b></p>
+            <p class="w46">Range <br> <b>max: 3200 km</b></p>
+            <div class="lbox27"></div>
+            <p class="w47">Aerodynamics <br> <b>L/D=18</b></p>
+        </div>
+    </div>
+    <!-- <div class="sec15">
+        <!-- <h1 class="w48">› FLARIS & LAR 01 ‹</h1>
+        <p class="w49">Flaris LAR 01 is an answer to the challenges of contemporaneity. It lets you forget about long and <br> exhausting cruise flights, providing great economic value at the same time. Our design goal was <br> to lower the purchase and exploitation costs to a minimum, which made our jet stand out among <br> the competition. It is an ideal means of transport for business where time and comfort are <br> as important as reasonable money management. </p>
+    </div> -->
+</div> -->
+    <div class="sec16">
+        <h1 class="w48">› FLARIS & LAR 01 ‹</h1>
+        <p class="w49">Flaris LAR 01 is an answer to the challenges of contemporaneity. It lets you forget about long and <br> exhausting cruise flights, providing great economic value at the same time. Our design goal was <br> to lower the purchase and exploitation costs to a minimum, which made our jet stand out among <br> the competition. It is an ideal means of transport for business where time and comfort are <br> as important as reasonable money management. </p>
+        <div class="bbox28"></div>
+    </div>
+    <!-- </div> -->
+    <div class="sec17">
+        <div class="bbox29">
+            <h1 class="w50">OWN A LAR 01</h1>
+            <h1 class="w51">BECOME A PILOT</h1>
+            <div class="bbox30">
+                <h3 class="w52">Check the offer > </h3>
+            </div>
+            <div class="bbox31">
+                <h3 class="w53">Piloting courses > </h3>
+            </div>
+        </div>
+    </div>
+    <div class="sec18">
+        <div class="bbox32"></div>
+        <div class="bbox33">
+            <h2 class="w54">› GOT QUESTIONS? CONTACT US</h2>
+            <form action="">
+                <input class="input1" type="text" placeholder="first name">
+            </form>
+            <form action="">
+                <input class="input2" type="text" placeholder="last name">
+            </form>
+            <form action="">
+                <input class="input3" type="email" placeholder="E-mail">
+            </form>
+            <form action="">
+                <input class="input4" type="text" placeholder="Phone number">
+            </form>
+            <form action="">
+                <input class="input5" type="text" placeholder="Your masseg">
+            </form>
+        </div>
+    </div>
+    <div id="sec6">
+        <div id="nbox1">
+            <h4 id="witing24">legal</h4>
+            <ul id="witing25">
+                <li id="list2">gdpr</li>
+                <li id="list2">Privacy policy</li>
+                <li id="list2">Cookies</li>
+            </ul>
+            <h4 id="witing26">About</h4>
+            <ul id="witing37">
+                <li id="list3">Press room</li>
+                <li id="list3">Manufacture</li>
+            </ul>
+            <h4 id="witing28">informations</h4>
+            <ul id="witing29">
+                <li id="list4">FAQ</li>
+                <li id="list4">News</li>
+            </ul>
+        </div>
+        <div id="nbox2">
+            <h1 id="witing30">Sign up to our newsletter</h1>
+            <form action="">
+                <input id="input1" type="email" placeholder="email">
+            </form>
+            <button id="but1"><h3 id="witing31">Sign up</h3></button>
+            <p id="witing32">Form protected by reCAPTCHA and Google</p>
+        </div>
+        <img id="img10" src="./images/LOGO_FLARIS_white-1.png" alt="">
+        <div id="nbox3"></div>
+        <p id="witing33">© 2022 Flaris. All rights reserved.</p>
+        <div id="nbox4">
+            <div id="fbox1"></div>
+            <div id="ybox2"></div>
+            <div id="ibox3"></div>
+        </div>
+    </div>
+</body>
+</html>
